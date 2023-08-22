@@ -1,6 +1,6 @@
 package file;
 
-//Fileクラスを使用するために下記をimport
+///Fileクラスを使用するために下記をimport
 //import java.io.File;
 //
 //public class Main {
@@ -15,7 +15,7 @@ package file;
 //}
 
 
-//ファイルの存在確認
+///ファイルの存在確認
 //import java.io.File;
 //import java.util.Arrays;
 //
@@ -35,21 +35,38 @@ package file;
 //}
 
 
-//ディレクトリの作成
+///ディレクトリの作成
+//import java.io.File;
+//
+//public class Main {
+//	public static void main(String[] args) {
+//		File dir1 = new File("dir1");
+//		File dir3 = new File("dir1/dir2/dir3");
+//		
+//		System.out.println("dir1: " + dir1.isDirectory());
+//		System.out.println("dir3: " + dir3.isDirectory());
+//		
+//		dir1.mkdir();
+//		dir3.mkdirs();
+//		
+//		System.out.println("dir1: " + dir1.isDirectory());
+//		System.out.println("dir3: " + dir3.isDirectory());
+//	}
+//}
+
+
+///Pathとの相互変換
 import java.io.File;
+import java.nio.file.Path; //Pathを使用するにはこれをimport
 
 public class Main {
 	public static void main(String[] args) {
-		File dir1 = new File("dir1");
-		File dir3 = new File("dir1/dir2/dir3");
+		File file1 = new File("abc.txt");
+		Path path1 = file1.toPath();
+		File file2 = path1.toFile();
 		
-		System.out.println("dir1: " + dir1.isDirectory());
-		System.out.println("dir3: " + dir3.isDirectory());
-		
-		dir1.mkdir();
-		dir3.mkdirs();
-		
-		System.out.println("dir1: " + dir1.isDirectory());
-		System.out.println("dir3: " + dir3.isDirectory());
+		System.out.println(file1);
+		System.out.println(path1);
+		System.out.println(file2);
 	}
 }
