@@ -1,0 +1,28 @@
+3-1のヒントのテキストを再掲
+
+**1.**
+この関数の実行には'IOException'が発生する可能性があります
+このため、メソッド宣言には'throws IOException'を付加します
+
+**2.**
+ファイルを読み込むための'FileInputStream'を作成する
+
+**3 & 4.**
+任意のリソースから文字列を読み出すためにはReaderインターフェースを使用します
+InputStreamに含まれるバイト列を文字列として読み出す場合は'InputStreamReader'を使用して引数にInputStreamとエンコーディングを指定する
+
+作成したInputStreamReaderを'BufferedReader'でラップすることによって'readLine()'という1行単位で文字列を読み出すメソッドが使えるようになる
+
+**5.**
+BufferedReaderの'readLine()'メソッドで最初の1行を読み出す
+読み出した文字列が'null'でない間"'while'ブロックの処理を繰り返します
+
+**6.**
+読み出した1行('line')を'handleLine()'関数に渡します
+handleLineは単純に渡された文字列を出力しているだけ
+InputStreamからバッファにバイト列を読み込み('read')ます
+返り値は実際に読み込んだバイト数です
+ファイルの最後まで読み込んで読む内容がない場合は'-1'が返ります
+
+**7.**
+再度'readLine()'して次の行を読み込む

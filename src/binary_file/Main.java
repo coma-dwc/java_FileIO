@@ -34,17 +34,36 @@ package binary_file;
 
 ///ファイル全体を一括で読み込む
 //readBinaryFile関数をByteArrayOutputStreamを使用せずに一斤ファイル全体を読み込むように書き直し
+//import java.io.File;
+//import java.io.FileInputStream;
+//import java.io.IOException;
+//
+//public class Main {
+//	private static byte[] readBinaryFile(File file) throws IOException {
+//		try (FileInputStream fis = new FileInputStream(file)) {
+//			byte[] buf = new byte[(int)file.length()];  //length()メソッドでファイルのサイズが分かるので、必要なメモリサイズを一気に取得してそこに読み込ませれば一括でファイルを読み込むことが出来る
+//			fis.read(buf);
+//			return buf;
+//		}
+//	}
+//	
+//	public static void main(String[] args) throws IOException {
+//		File file = new File("2-1.txt");
+//		byte[] data = readBinaryFile(file);
+//		System.out.println(new String(data, "utf-8"));
+//	}
+//}
+
+
+///Files#readAllBytes
+//readBinaryFile関数をFiles#readAllBytesを使って書き直す
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class Main {
 	private static byte[] readBinaryFile(File file) throws IOException {
-		try (FileInputStream fis = new FileInputStream(file)) {
-			byte[] buf = new byte[(int)file.length()];  //length()メソッドでファイルのサイズが分かるので、必要なメモリサイズを一気に取得してそこに読み込ませれば一括でファイルを読み込むことが出来る
-			fis.read(buf);
-			return buf;
-		}
+		return Files.readAllBytes(file.toPath());
 	}
 	
 	public static void main(String[] args) throws IOException {
